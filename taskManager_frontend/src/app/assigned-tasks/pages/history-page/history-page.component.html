@@ -1,0 +1,20 @@
+<h2 class="modules-title">My Historical Tasks</h2>
+<hr class="modules-separator" />
+
+<section class="module-section">
+  <shared-searchbox
+    [searchTerm]="searchTerm"
+    (onDebounce)="onSearch($event)">
+  </shared-searchbox>
+</section>
+
+<section class="module-section">
+  <tasks-table
+    [tasks]="tasks"
+    [showPriority]="false">
+  </tasks-table>
+
+  <div *ngIf="isLoading" class="spinner-wrapper">
+    <shared-spinner></shared-spinner>
+  </div>
+</section>

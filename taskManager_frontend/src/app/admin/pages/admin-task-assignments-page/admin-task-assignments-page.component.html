@@ -1,0 +1,67 @@
+<section class="module-section">
+  <h3 class="section-title">Assign Task</h3>
+  <app-assign-task-form
+    [users]="users"
+    [tasks]="tasks"
+    (formSubmit)="onAssignTaskSubmit($event)">
+  </app-assign-task-form>
+
+  <div class="pagination-controls">
+    <button class="pagination-button" (click)="prevTaskPage()" [disabled]="taskPage === 0">
+      ← Previous
+    </button>
+    <span class="pagination-info">Page {{ taskPage + 1 }} of {{ taskTotalPages }}</span>
+    <button class="pagination-button" (click)="nextTaskPage()" [disabled]="taskPage + 1 >= taskTotalPages">
+      Next →
+    </button>
+  </div>
+</section>
+
+<section class="module-section">
+  <h3 class="section-title">Existing Assignments</h3>
+
+  <div *ngIf="assignments.length === 0; else assignmentsTable" class="empty-alert">
+    No tasks assigned.
+  </div>
+
+  <ng-template #assignmentsTable>
+    <div class="table-wrapper">
+      <table class="module-table">
+        <thead>
+          <tr>
+            <th class="col-id">#</th>
+            <th class="col-task">Task</th>
+            <th class="col-user">User</th>
+            <th class="col-status">Status</th>
+            <th class="col-actions">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let a of assignments; let i = index">
+            <td>{{ i + 1 }}</td>
+            <td>{{ a.title }}</td>
+            <td>{{ getUserEmail(a.userId) }}</td>
+            <td>
+              <i *ngIf="!a.completed" class="fas fa-hourglass status-icon pending" title="Pending"></i>
+              <span *ngIf="!a.completed" class="status-text pending">Pending</span>
+              <i *ngIf="a.completed" class="fas fa-trophy status-icon achieved" title="Completed"></i>
+              <span *ngIf="a.completed" class="status-text achieved">Achieved</span>
+            </td>
+            <td>
+              <button class="icon-button update" (click)="toggleCompletion(a.id)" title="Toggle Status">
+                <i class="fas fa-sync-alt"></i>
+              </button>
+              <button class="icon-button delete" (click)="unassignTask(a.id)" title="Unassign Task">
+                <i class="fas fa-trash-alt"></i>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div *ngIf="isLoading" class="spinner-wrapper">
+      <shared-spinner></shared-spinner>
+    </div>
+  </ng-template>
+</section>

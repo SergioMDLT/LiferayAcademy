@@ -1,0 +1,20 @@
+<h2 class="modules-title">My Assigned Modules</h2>
+<hr class="modules-separator" />
+
+<div *ngIf="isLoading" class="modules-spinner">
+  <shared-spinner></shared-spinner>
+</div>
+
+<div *ngIf="!isLoading && assignedModules.length > 0" class="modules-grid">
+  <div *ngFor="let module of assignedModules" class="module-card">
+    <h3 class="module-title">{{ module.name }}</h3>
+    <p class="module-description">{{ module.description }}</p>
+    <button class="module-button" (click)="goToModuleTasks(module.trainingModuleId)">
+      View Tasks
+    </button>
+  </div>
+</div>
+
+<p *ngIf="!isLoading && assignedModules.length === 0" class="modules-empty">
+  No modules assigned.
+</p>

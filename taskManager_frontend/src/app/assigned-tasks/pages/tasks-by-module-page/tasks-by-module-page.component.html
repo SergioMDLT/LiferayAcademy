@@ -1,0 +1,20 @@
+<h2 class="modules-title">Module Tasks: {{ moduleId }}</h2>
+<hr class="modules-separator" />
+
+<section class="module-section">
+  <div *ngIf="isLoading" class="spinner-wrapper">
+    <shared-spinner></shared-spinner>
+  </div>
+
+  <tasks-table
+    *ngIf="!isLoading && tasks.length > 0"
+    [tasks]="tasks"
+    [showPriority]="true"
+    [priorityType]="'module'"
+    (taskCompleted)="removeCompletedTask($event)">
+  </tasks-table>
+
+  <p *ngIf="!isLoading && tasks.length === 0" class="empty-alert">
+    No pending tasks for this module.
+  </p>
+</section>

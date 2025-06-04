@@ -1,0 +1,150 @@
+.module-section {
+  margin-bottom: 2.5rem;
+  background-color: #ffffff;
+  padding: 1.5rem;
+  border-radius: 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  animation: fadeIn 0.4s ease-in;
+}
+
+.section-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.empty-alert {
+  background-color: #fff3cd;
+  color: #856404;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  text-align: center;
+  font-size: 1rem;
+  font-weight: 500;
+  animation: fadeIn 0.3s ease-in;
+}
+
+.table-wrapper {
+  overflow-x: auto;
+}
+
+.module-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 720px;
+  table-layout: fixed;
+}
+
+th,
+td {
+  padding: 0.75rem 1rem;
+  border: 1px solid #e0e0e0;
+  text-align: center;
+  vertical-align: middle;
+}
+
+th {
+  background-color: #f9fafb;
+  font-weight: 600;
+  color: #444;
+}
+
+tr:hover {
+  background-color: #f5f7fa;
+}
+
+.col-id {
+  width: 5%;
+}
+
+.col-module {
+  width: 28%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.col-user {
+  width: 28%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.col-status {
+  width: 15%;
+}
+
+.col-actions {
+  width: 16%;
+}
+
+.status-icon {
+  font-size: 0.875rem;
+  margin-right: 0.25rem;
+  vertical-align: middle;
+}
+
+.status-icon.pending {
+  color: #4299e1;
+}
+
+.status-icon.achieved {
+  color: #ecc94b;
+}
+
+.status-text {
+  font-weight: 600;
+  vertical-align: middle;
+}
+
+.status-text.pending {
+  color: #3182ce;
+}
+
+.status-text.achieved {
+  color: #b7791f;
+}
+
+.icon-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.3rem;
+  font-size: 1rem;
+  margin-right: 0.5rem;
+  transition: color 0.2s ease, transform 0.1s ease;
+
+  &:active {
+    transform: scale(0.95);
+  }
+
+  &.update {
+    color: #0d6efd;
+
+    &:hover {
+      color: #084298;
+    }
+  }
+
+  &.delete {
+    color: #dc3545;
+
+    &:hover {
+      color: #a71d2a;
+    }
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(0.5rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

@@ -1,0 +1,41 @@
+<aside class="sidebar">
+  <h2 class="sidebar-title">Liferay Academy</h2>
+  <hr class="sidebar-separator" />
+
+  <ul class="sidebar-list">
+    <li routerLink="main" routerLinkActive="active" class="sidebar-item">
+      <i class="fas fa-hourglass-half sidebar-icon"></i>
+      Pending Tasks
+    </li>
+    <li routerLink="history" routerLinkActive="active" class="sidebar-item">
+      <i class="fas fa-history sidebar-icon"></i>
+      Task History
+    </li>
+    <li routerLink="assigned-modules" routerLinkActive="active" class="sidebar-item">
+      <i class="fas fa-book-reader sidebar-icon"></i>
+      Assigned Modules
+    </li>
+    <li routerLink="modules" routerLinkActive="active" class="sidebar-item">
+      <i class="fas fa-th-list sidebar-icon"></i>
+      Available Modules
+    </li>
+    <li routerLink="cli" routerLinkActive="active" class="sidebar-item">
+      <i class="fas fa-rocket sidebar-icon"></i>
+      Initializr
+    </li>
+    <li routerLink="admin-panel" routerLinkActive="active" class="sidebar-item" *ngIf="isAdmin">
+      <i class="fas fa-tools sidebar-icon"></i>
+      Admin Panel
+    </li>
+
+    <li class="sidebar-item auth-section">
+      <div *ngIf="auth.user$ | async as user; else loggedOut">
+        <p class="user-name">{{ getUsernameFromEmail(user.name ?? '') }}</p>
+        <button class="sidebar-button danger" (click)="auth.logout()">Logout</button>
+      </div>
+      <ng-template #loggedOut>
+        <button class="sidebar-button" (click)="auth.login()">Login</button>
+      </ng-template>
+    </li>
+  </ul>
+</aside>

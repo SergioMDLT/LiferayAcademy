@@ -1,0 +1,42 @@
+<section class="form-card">
+  <form [formGroup]="assignForm" (ngSubmit)="onSubmit()">
+
+    <div class="form-group">
+      <label for="userId" class="form-label">User</label>
+      <div class="select-wrapper">
+        <select id="userId" formControlName="userId" class="form-select">
+          <option [ngValue]="null" disabled>Select a user</option>
+          <option *ngFor="let user of users" [value]="user.id">
+            {{ user.email }}
+          </option>
+        </select>
+      </div>
+      <div class="form-error" *ngIf="assignForm.get('userId')?.invalid && assignForm.get('userId')?.touched">
+        User is required
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="taskId" class="form-label">Task</label>
+      <div class="task-selector">
+        <button
+          type="button"
+          class="task-button"
+          *ngFor="let task of tasks"
+          [class.selected]="assignForm.get('taskId')?.value === task.id"
+          (click)="assignForm.get('taskId')?.setValue(task.id)"
+        >
+          {{ task.title }}
+        </button>
+      </div>
+      <div class="form-error" *ngIf="assignForm.get('taskId')?.invalid && assignForm.get('taskId')?.touched">
+        Task is required
+      </div>
+    </div>
+
+    <button type="submit" [disabled]="assignForm.invalid" class="form-button success">
+      Assign
+    </button>
+
+  </form>
+</section>

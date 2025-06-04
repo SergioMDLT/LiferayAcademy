@@ -1,0 +1,34 @@
+<section class="form-card">
+  <form [formGroup]="moduleForm" (ngSubmit)="onSubmit()">
+
+    <div class="form-group">
+      <label for="name" class="form-label">Module Name</label>
+      <input
+        id="name"
+        type="text"
+        class="form-input"
+        formControlName="name"
+        placeholder="Insert name"
+      />
+      <div class="form-error" *ngIf="moduleForm.get('name')?.invalid && moduleForm.get('name')?.touched">
+        Name is required
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="description" class="form-label">Description</label>
+      <textarea
+        id="description"
+        class="form-input"
+        formControlName="description"
+        placeholder="Insert description (optional)"
+        rows="4">
+      </textarea>
+    </div>
+
+    <button type="submit" class="form-button primary" [disabled]="moduleForm.invalid">
+      Save
+    </button>
+
+  </form>
+</section>

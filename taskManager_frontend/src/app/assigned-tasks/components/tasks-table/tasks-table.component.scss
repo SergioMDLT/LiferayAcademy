@@ -1,0 +1,168 @@
+.empty-alert {
+  background-color: #fff3cd;
+  color: #856404;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  text-align: center;
+  font-size: 1rem;
+  font-weight: 500;
+  animation: fadeIn 0.4s ease-in;
+}
+
+.table-wrapper {
+  overflow-x: auto;
+  width: 100%;
+}
+
+.module-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 960px;
+  table-layout: fixed;
+}
+
+th {
+  padding: 0.75rem 1rem;
+  border: 1px solid #e0e0e0;
+  text-align: center;
+  vertical-align: middle;
+  background-color: #f9fafb;
+  font-weight: 600;
+  color: #444;
+}
+
+td {
+  padding: 0.75rem 1rem;
+  border: 1px solid #e0e0e0;
+  text-align: center;
+  vertical-align: middle;
+}
+
+tr {
+  transition: background-color 0.2s ease;
+}
+
+tr:hover {
+  background-color: #f5f7fa;
+}
+
+.col-id {
+  width: 3%;
+}
+
+.col-title {
+  width: 22%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.col-description {
+  width: 50%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.col-status {
+  width: 8%;
+}
+
+.col-actions {
+  width: 7%;
+}
+
+.col-drag {
+  width: 4%;
+  text-align: center;
+}
+
+.drag-table {
+  position: relative;
+  overflow: hidden;
+}
+
+.status-icon {
+  font-size: 0.875rem;
+  margin-right: 0.25rem;
+  vertical-align: middle;
+}
+
+.status-icon.pending {
+  color: #4299e1;
+}
+
+.status-icon.achieved {
+  color: #ecc94b;
+}
+
+.status-text {
+  font-weight: 600;
+  vertical-align: middle;
+}
+
+.status-text.pending {
+  color: #3182ce;
+}
+
+.status-text.achieved {
+  color: #b7791f;
+}
+
+.icon-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.3rem;
+  font-size: 1rem;
+  margin-right: 0.4rem;
+  transition: color 0.2s ease, transform 0.1s ease;
+
+  &:active {
+    transform: scale(0.95);
+  }
+
+  &.update {
+    color: #0d6efd;
+
+    &:hover {
+      color: #084298;
+    }
+  }
+
+  &.delete {
+    color: #dc3545;
+
+    &:hover {
+      color: #a71d2a;
+    }
+  }
+}
+
+td[cdkDragHandle] {
+  cursor: grab;
+
+  &:active {
+    cursor: grabbing;
+  }
+}
+
+.drag-handle-icon {
+  font-size: 1.5rem;
+  color: #6c757d;
+}
+
+.table-animated {
+  transition: all 0.2s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(0.5rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

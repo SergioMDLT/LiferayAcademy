@@ -1,0 +1,31 @@
+<h2 class="modules-title">Initializr</h2>
+<hr class="modules-separator" />
+
+<div *ngIf="isLoading" class="modules-spinner">
+  <shared-spinner></shared-spinner>
+</div>
+
+<div *ngIf="!isLoading" class="cli-description-box">
+  <p class="cli-description">
+    <strong>CiviBlade</strong> is a Blade CLI extension developed by the creators of this website to automate the generation of Liferay workspaces with predefined configurations and embedded resources. It offers new users and developers in training a much easier entry into the Liferay ecosystem by allowing them to bypass initial setup steps and directly create portlets, services, and more.<br><br>
+    You can explore the CiviBlade project repository and contribute your own custom commands at <a href="https://github.com/SergioMDLT/CiviBlade.git" target="_blank" rel="noopener noreferrer">GitHub</a>.<br><br>
+    <em>If this Initializr does not work, please download or compile <code>civiblade.jar</code> and execute it. Then, from the same location in a terminal, run: <code>.\civiblade init</code></em>
+  </p>
+</div>
+
+<section class="form-card" *ngIf="!isLoading">
+  <form (submit)="onSubmit($event)">
+    <div class="form-group">
+      <label for="version" class="form-label">Version</label>
+      <select id="version" name="version" class="form-select" required>
+        <option value="" disabled selected>Select a version</option>
+        <option value="7.4-ga125">7.4-ga125</option>
+        <option value="7.4-ga132">7.4-ga132</option>
+      </select>
+    </div>
+
+    <button type="submit" class="form-button primary">
+      Init
+    </button>
+  </form>
+</section>

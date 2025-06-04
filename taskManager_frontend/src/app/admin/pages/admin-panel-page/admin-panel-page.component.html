@@ -1,0 +1,37 @@
+<nav class="admin-nav">
+  <div class="admin-nav-links">
+    <a routerLink="manage-modules" routerLinkActive="active" class="admin-nav-link">
+      <div class="nav-link-content">
+        <i class="fas fa-cubes nav-icon"></i>
+        Training Modules
+      </div>
+    </a>
+    <a routerLink="assignments" routerLinkActive="active" class="admin-nav-link">
+      <div class="nav-link-content">
+        <i class="fas fa-user-check nav-icon"></i>
+        Module Assignments
+      </div>
+    </a>
+    <a routerLink="manage-tasks" routerLinkActive="active" class="admin-nav-link">
+      <div class="nav-link-content">
+        <i class="fas fa-clipboard-list nav-icon"></i>
+        Tasks
+      </div>
+    </a>
+    <a routerLink="task-assignments" routerLinkActive="active" class="admin-nav-link">
+      <div class="nav-link-content">
+        <i class="fas fa-user-edit nav-icon"></i>
+        Task Assignments
+      </div>
+    </a>
+  </div>
+
+  <div class="admin-nav-info">
+    <div class="admin-nav-divider"></div>
+    <h2 class="admin-nav-title">Admin Panel</h2>
+  </div>
+</nav>
+
+<hr class="modules-separator" />
+
+<router-outlet></router-outlet>

@@ -1,0 +1,13 @@
+<div class="searchbox-container">
+  <div class="input-wrapper">
+    <input
+      id="search-box"
+      type="text"
+      class="search-input"
+      [value]="searchTerm"
+      (keyup)="onKeyPress(txtInput.value)"
+      #txtInput
+      placeholder="Type to search..."
+    />
+  </div>
+</div>

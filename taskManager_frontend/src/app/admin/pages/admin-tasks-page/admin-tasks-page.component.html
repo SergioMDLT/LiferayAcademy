@@ -1,0 +1,46 @@
+<section class="module-section">
+  <h3 class="section-title">Create New Task</h3>
+  <shared-task-form
+    [trainingModules]="trainingModules"
+    (formSubmit)="onCreateTask($event)">
+  </shared-task-form>
+</section>
+
+<section class="module-section">
+  <h3 class="section-title">Existing Tasks</h3>
+
+  <div *ngIf="tasks.length === 0 && !isLoading" class="empty-alert">
+    No tasks available.
+  </div>
+
+  <div *ngIf="tasks.length > 0" class="table-wrapper">
+    <table class="module-table">
+      <thead>
+        <tr>
+          <th class="col-id">#</th>
+          <th class="col-title">Title</th>
+          <th class="col-description">Description</th>
+          <th class="col-module">Module</th>
+          <th class="col-actions">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let task of tasks; let i = index">
+          <td>{{ i + 1 }}</td>
+          <td>{{ task.title }}</td>
+          <td>{{ task.description }}</td>
+          <td>{{ getModuleName(task.trainingModuleId) }}</td>
+          <td>
+            <button class="icon-button delete" (click)="deleteTask(task.id)">
+              <i class="fas fa-trash-alt"></i>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="isLoading" class="spinner-wrapper">
+    <shared-spinner></shared-spinner>
+  </div>
+</section>
