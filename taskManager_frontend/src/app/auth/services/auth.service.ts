@@ -4,6 +4,7 @@ import { AuthService as Auth0Service, User } from '@auth0/auth0-angular';
 import { BehaviorSubject, catchError, filter, from, map, Observable, of, switchMap, take, tap } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { environment } from '../../../environments/environment';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
@@ -44,14 +45,14 @@ export class AuthService {
 
   private registerUser(user: User): void {
     const userDTO = { auth0Id: user.sub, email: user.email };
-    this.http.post('http://localhost:8080/users/register', userDTO).subscribe();
+    this.http.post(`${environment.apiUrl}/users/register`, userDTO).subscribe();
   }
 
   login(): void {
     if (!this.isBrowser || !this.auth0) return;
     this.auth0.loginWithRedirect({
       authorizationParams: {
-        redirect_uri: 'http://localhost:4200/callback'
+        redirect_uri: `${environment.auth0LogoutUrl}/callback`
       },
       appState: { target: '/main' }
     });
@@ -60,7 +61,7 @@ export class AuthService {
   logout(): void {
     if (this.isBrowser && this.auth0) {
       this.auth0.logout({
-        logoutParams: { returnTo: 'http://localhost:4200' }
+        logoutParams: { returnTo: environment.auth0LogoutUrl }
       });
     }
   }
